@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import os
 
-os.makedirs("data/raw", exist_ok=True)
+os.makedirs("data/api_nav", exist_ok=True)
 
 schemes = {
     "HDFC_Top100_Direct": 125497,
@@ -15,23 +15,23 @@ schemes = {
 
 for name, code in schemes.items():
 
-    print(f"Fetching {name}")
+    try:
+        print(f"Fetching {name}")
 
-    url = f"https://api.mfapi.in/mf/{code}"
+        url = f"https://api.mfapi.in/mf/{code}"
 
-    response = requests.get(url)
-
-    if response.status_code == 200:
+        response = requests.get(url, timeout=20)
+        response.raise_for_status()
 
         data = response.json()
 
         nav_df = pd.DataFrame(data["data"])
 
-        output_file = f"data/raw/{name}.csv"
+        output_file = f"data/api_nav/{name}.csv"
 
         nav_df.to_csv(output_file, index=False)
 
         print(f"Saved {output_file}")
 
-    else:
-        print(f"Failed for {name}")
+    except Exception as e:
+        print(f"Error in {name}: {e}")

@@ -1,33 +1,35 @@
-Day 1 Notes
-
-The assignment references 10 provided CSV datasets including fund_master and nav_history.
-
-These datasets were not supplied. Therefore, API-based NAV datasets were fetched from mfapi.in and used to validate the ingestion pipeline.
-
-The scripts are fully functional and can process the actual datasets immediately once they are made available.
-
-# Mutual Fund Analytics Capstone
+# Bluestock Mutual Fund Analytics Capstone
 
 ## Day 1 Deliverables
 
 - Project setup
+- Git repository
 - Data ingestion pipeline
 - NAV API integration
-- Mutual fund CSV generation
+- Fund master exploration
+- AMFI validation
+- Data quality summary
 
-## Technologies
+## Project Structure
 
-- Python
-- Pandas
-- Requests
-- Git
-- GitHub
+data/raw -> Official datasets
 
-## Files
+data/api_nav -> API downloaded NAV files
 
-- scripts/data_ingestion.py
-- scripts/live_nav_fetch.py
+scripts -> Python scripts
 
-## Data Sources
+reports -> Reports
 
-- mfapi.in
+sql -> SQL files
+
+dashboard -> Power BI/Tableau files
+
+## Run
+
+python scripts/data_ingestion.py
+
+python scripts/live_nav_fetch.py
+
+python scripts/fund_master_analysis.py
+
+python scripts/amfi_validation.py
