@@ -17,8 +17,6 @@ FROM fact_nav
 GROUP BY month;
 
 
--- 3 SIP YoY Growth
-
 -- 3 SIP Inflow YoY Growth
 
 SELECT
